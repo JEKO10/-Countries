@@ -2,4 +2,40 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 40px;
+  /* box-shadow: 2px 2px 5px 1px #000; */
+  border-bottom: 2px solid #f0f0f0;
+}
+
+nav button {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 5px;
+  opacity: 0.6;
+  transition: all 500ms ease;
+}
+
+nav button span {
+  padding-right: 10px;
+}
+
+nav button:hover {
+  opacity: 1;
+}
+
+main {
+  background-color: #fafafa;
 }
