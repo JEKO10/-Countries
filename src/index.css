@@ -5,6 +5,10 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+main {
+  background-color: #fafafa;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -36,6 +40,9 @@ nav button:hover {
   opacity: 1;
 }
 
-main {
-  background-color: #fafafa;
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 50px;
 }
