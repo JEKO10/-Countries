@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SearchImg from "../images/icon-search.svg";
+import SingleCountry from "./SingleCountry";
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -37,6 +38,11 @@ function Countries() {
             </svg>
           </button>
         </div>
+      </section>
+      <section className="countries">
+        {countries.map((country) => {
+          return <SingleCountry country={country} />;
+        })}
       </section>
     </>
   );
