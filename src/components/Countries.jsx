@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
 import SearchImg from "../images/icon-search.svg";
 
 function Countries() {
+  const [countries, setCountries] = useState([]);
+
+  const fetchData = async () => {
+    const response = await fetch("https://restcountries.com/v2/all");
+    const data = await response.json();
+    setCountries(data);
+    console.log(countries);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <section className="searchBar">
