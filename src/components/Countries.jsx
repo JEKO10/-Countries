@@ -4,12 +4,13 @@ import SingleCountry from "./SingleCountry";
 
 function Countries() {
   const [countries, setCountries] = useState([]);
+  const [query, setQuery] = useState("");
 
   const fetchData = async () => {
     const response = await fetch("https://restcountries.com/v2/all");
     const data = await response.json();
     setCountries(data);
-    console.log(data);
+    console.log(countries);
   };
 
   useEffect(() => {
@@ -21,7 +22,14 @@ function Countries() {
       <section className="searchBar">
         <div>
           <img src={SearchImg} alt="IMG" />
-          <input type="text" placeholder="Search for a country..." />
+          <input
+            type="text"
+            placeholder="Search for a country..."
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+          />
         </div>
         <div>
           <button>
