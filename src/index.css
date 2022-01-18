@@ -84,3 +84,40 @@ nav button:hover {
   font-size: 1rem;
   box-shadow: 0 1px 2px 0 #0000000d;
 }
+
+.countries {
+  padding: 0 60px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.country {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 10px 5px 0 #0000000d;
+}
+
+.country img {
+  height: 200px;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.country h2 {
+  padding: 10px 25px;
+  font-size: 1.2rem;
+}
+
+.country h4 {
+  padding: 0 25px;
+}
+
+.country h4:last-of-type {
+  padding-bottom: 20px;
+}
+
+.country h4 span {
+  font-weight: 400;
+}

@@ -9,7 +9,7 @@ function Countries() {
     const response = await fetch("https://restcountries.com/v2/all");
     const data = await response.json();
     setCountries(data);
-    console.log(countries);
+    console.log(data);
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function Countries() {
       </section>
       <section className="countries">
         {countries.map((country) => {
-          return <SingleCountry country={country} />;
+          return <SingleCountry country={country} key={country.alpha3Code} />;
         })}
       </section>
     </>
