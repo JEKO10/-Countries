@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SearchImg from "../images/icon-search.svg";
 import SingleCountry from "./SingleCountry";
 
-function Countries() {
+function Countries({ isDark }) {
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
 
@@ -20,9 +20,10 @@ function Countries() {
   return (
     <>
       <section className="searchBar">
-        <div>
+        <div className="search">
           <img src={SearchImg} alt="IMG" />
           <input
+            className={isDark ? "darkText dark" : ""}
             type="text"
             placeholder="Search for a country..."
             value={query}
@@ -32,7 +33,7 @@ function Countries() {
           />
         </div>
         <div>
-          <button>
+          <button className={isDark ? "dark darkText" : ""}>
             <span>All</span>
             <svg
               width="1em"

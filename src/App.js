@@ -4,6 +4,8 @@ import Countries from "./components/Countries";
 function App() {
   const [isDark, setIsDark] = useState(false);
 
+  const divs = document.getElementsByTagName("div");
+
   if (isDark) {
     document.body.style.backgroundColor = "#202c37";
 
@@ -17,8 +19,12 @@ function App() {
         singleText[i].classList.add("darkText");
       }
     });
+
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].classList.add("dark");
+    }
   } else {
-    document.body.style.backgroundColor = "#fafafa";
+    document.body.style.backgroundColor = "#fff";
 
     const everyH2 = document.getElementsByTagName("h2");
     const everyH3 = document.getElementsByTagName("h3");
@@ -30,6 +36,10 @@ function App() {
         singleText[i].classList.remove("darkText");
       }
     });
+
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].classList.remove("dark");
+    }
   }
 
   return (
@@ -61,8 +71,14 @@ function App() {
           )}
         </button>
       </nav>
-      <main>
-        <Countries />
+      <main
+        style={
+          isDark
+            ? { backgroundColor: "#2b3945" }
+            : { backgroundColor: "#fafafa" }
+        }
+      >
+        <Countries isDark={isDark} />
       </main>
     </>
   );
