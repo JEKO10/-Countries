@@ -89,7 +89,6 @@ nav button:hover {
 }
 
 .country {
-  background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 10px 5px 0 #0000000d;
   width: 320px;
@@ -155,7 +154,7 @@ nav button:hover {
   color: #fff;
 }
 
-.loading {
+/* .loading {
   width: 6rem;
   height: 6rem;
   margin: 0 auto;
@@ -164,10 +163,68 @@ nav button:hover {
   border: 3px solid #ccc;
   border-top-color: #0177fb;
   animation: spinner 0.6s linear infinite;
+} */
+
+@media screen and (max-width: 760px) {
+  .countries {
+    padding: 0 30px;
+    place-items: center;
+  }
 }
 
-@keyframes spinner {
+@media screen and (max-width: 520px) {
+  nav {
+    padding: 25px 20px;
+  }
+
+  nav button span {
+    display: none;
+  }
+
+  .searchBar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 35px;
+  }
+
+  .searchBar .search {
+    width: 100%;
+  }
+
+  .searchBar input {
+    width: 100%;
+    padding: 5px 5px 5px 15px; /* top right bottom left */
+  }
+
+  .searchBar .regions {
+    margin: 1rem 0;
+  }
+
+  .regions ul {
+    top: 13.5rem;
+  }
+
+  .countries {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .countries {
+    padding: 0;
+  }
+
+  .country {
+    width: 300px;
+  }
+
+  .country img {
+    height: 150px;
+  }
+}
+
+/* @keyframes spinner {
   to {
     transform: rotate(360deg);
   }
-}
+} */
