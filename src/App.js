@@ -5,14 +5,14 @@ function App() {
   const [isDark, setIsDark] = useState(false);
 
   const divs = document.getElementsByTagName("div");
+  const text = [
+    document.getElementsByTagName("h2"),
+    document.getElementsByTagName("h3"),
+    document.getElementsByTagName("h4"),
+  ];
 
   if (isDark) {
-    document.body.style.backgroundColor = "#202c37";
-
-    const everyH2 = document.getElementsByTagName("h2");
-    const everyH3 = document.getElementsByTagName("h3");
-    const everyH4 = document.getElementsByTagName("h4");
-    const text = [everyH2, everyH3, everyH4];
+    document.body.style.backgroundColor = "#2b3945";
 
     text.forEach((singleText) => {
       for (let i = 0; i < singleText.length; i++) {
@@ -24,12 +24,7 @@ function App() {
       divs[i].classList.add("dark");
     }
   } else {
-    document.body.style.backgroundColor = "#fff";
-
-    const everyH2 = document.getElementsByTagName("h2");
-    const everyH3 = document.getElementsByTagName("h3");
-    const everyH4 = document.getElementsByTagName("h4");
-    const text = [everyH2, everyH3, everyH4];
+    document.body.style.backgroundColor = "#fafafa";
 
     text.forEach((singleText) => {
       for (let i = 0; i < singleText.length; i++) {
@@ -44,7 +39,11 @@ function App() {
 
   return (
     <>
-      <nav>
+      <nav
+        style={
+          isDark ? { backgroundColor: "#202c37" } : { backgroundColor: "#fff" }
+        }
+      >
         <h3>Where in the world?</h3>
         <button
           onClick={() => {

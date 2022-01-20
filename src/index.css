@@ -93,6 +93,7 @@ nav button:hover {
   border-radius: 5px;
   box-shadow: 0 10px 5px 0 #0000000d;
   width: 320px;
+  cursor: pointer;
 }
 
 .country img {
