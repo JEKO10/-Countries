@@ -5,6 +5,7 @@ import SingleCountry from "./SingleCountry";
 function Countries({ isDark }) {
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
 
   const fetchData = async () => {
     const response = await fetch("https://restcountries.com/v2/all");
@@ -32,8 +33,13 @@ function Countries({ isDark }) {
             }}
           />
         </div>
-        <div>
-          <button className={isDark ? "dark darkText" : ""}>
+        <div className="regions">
+          <button
+            className={isDark ? "dark darkText" : ""}
+            onClick={() => {
+              setOpen(!open);
+            }}
+          >
             <span>All</span>
             <svg
               width="1em"
@@ -46,6 +52,15 @@ function Countries({ isDark }) {
               <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
             </svg>
           </button>
+          <ul className={open ? "" : "hide"}>
+            <li>Africa</li>
+            <li>Americas</li>
+            <li>Asia</li>
+            <li>Europe</li>
+            <li>Oceania</li>
+            <li>Polar</li>
+            <li>All</li>
+          </ul>
         </div>
       </section>
       <section className="countries">
