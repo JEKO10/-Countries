@@ -6,6 +6,8 @@ function Countries({ isDark }) {
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [region, setRegion] = useState("All");
+  const [filtered, setFiltered] = useState([]);
 
   const fetchData = async () => {
     const response = await fetch("https://restcountries.com/v2/all");
@@ -17,6 +19,13 @@ function Countries({ isDark }) {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const filterCountries = (region) => {
+    const newCountries = countries.filter(
+      (country) => country.region === region
+    );
+    setFiltered(newCountries);
+  };
 
   return (
     <>
@@ -40,7 +49,7 @@ function Countries({ isDark }) {
               setOpen(!open);
             }}
           >
-            <span>All</span>
+            <span>{region}</span>
             <svg
               width="1em"
               height="1em"
@@ -53,21 +62,85 @@ function Countries({ isDark }) {
             </svg>
           </button>
           <ul className={open ? "" : "hide"}>
-            <li>Africa</li>
-            <li>Americas</li>
-            <li>Asia</li>
-            <li>Europe</li>
-            <li>Oceania</li>
-            <li>Polar</li>
-            <li>All</li>
+            <li
+              onClick={() => {
+                filterCountries("Africa");
+                setOpen(false);
+                setRegion("Africa");
+              }}
+            >
+              Africa
+            </li>
+            <li
+              onClick={() => {
+                filterCountries("Americas");
+                setOpen(false);
+                setRegion("Americas");
+              }}
+            >
+              Americas
+            </li>
+            <li
+              onClick={() => {
+                filterCountries("Asia");
+                setOpen(false);
+                setRegion("Asia");
+              }}
+            >
+              Asia
+            </li>
+            <li
+              onClick={() => {
+                filterCountries("Europe");
+                setOpen(false);
+                setRegion("Europe");
+              }}
+            >
+              Europe
+            </li>
+            <li
+              onClick={() => {
+                filterCountries("Oceania");
+                setOpen(false);
+                setRegion("Oceania");
+              }}
+            >
+              Oceania
+            </li>
+            <li
+              onClick={() => {
+                filterCountries("Polar");
+                setOpen(false);
+                setRegion("Polar");
+              }}
+            >
+              Polar
+            </li>
+            <li
+              onClick={() => {
+                setFiltered(countries);
+                setOpen(false);
+                setRegion("All");
+              }}
+            >
+              All
+            </li>
           </ul>
         </div>
       </section>
-      <section className="countries">
-        {countries.map((country) => {
-          return <SingleCountry country={country} key={country.alpha3Code} />;
-        })}
-      </section>
+      {region === "All" ? (
+        <section className="countries">
+          {countries.map((country) => {
+            return <SingleCountry country={country} key={country.alpha3Code} />;
+          })}
+        </section>
+      ) : (
+        <section className="countries">
+          {filtered.map((country) => {
+            return <SingleCountry country={country} key={country.alpha3Code} />;
+          })}
+        </section>
+      )}
     </>
   );
 }
