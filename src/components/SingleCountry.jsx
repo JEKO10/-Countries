@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 function SingleCountry({ country, isDark }) {
   const { name, population, region, capital } = country;
 

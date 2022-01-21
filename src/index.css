@@ -5,6 +5,10 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+  transition: all 1s ease;
+}
+
 main {
   transition: all 1s ease;
 }

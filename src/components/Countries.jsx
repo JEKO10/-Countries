@@ -1,19 +1,33 @@
 import { useEffect, useState } from "react";
 import SearchImg from "../images/icon-search.svg";
 import SingleCountry from "./SingleCountry";
+import SingleSearched from "./SingleSearched";
 
 function Countries({ isDark }) {
   const [countries, setCountries] = useState([]);
+  const [searched, setSearched] = useState([]);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [region, setRegion] = useState("All");
   const [filtered, setFiltered] = useState([]);
+  const [filteredSearch, setFilteredSearched] = useState([]);
 
   const fetchData = async () => {
     const response = await fetch("https://restcountries.com/v2/all");
     const data = await response.json();
     setCountries(data);
-    console.log(countries);
+  };
+
+  const fetchSearched = async () => {
+    try {
+      const response = await fetch(
+        `https://restcountries.com/v3.1/name/${query}`
+      );
+      const data = await response.json();
+      setSearched(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -24,7 +38,9 @@ function Countries({ isDark }) {
     const newCountries = countries.filter(
       (country) => country.region === region
     );
+    const newSearched = searched.filter((country) => country.region === region);
     setFiltered(newCountries);
+    setFilteredSearched(newSearched);
   };
 
   return (
@@ -39,6 +55,7 @@ function Countries({ isDark }) {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
+              fetchSearched();
             }}
           />
         </div>
@@ -128,30 +145,56 @@ function Countries({ isDark }) {
           </ul>
         </div>
       </section>
-      {region === "All" ? (
+      {query.length === 0 && region === "All" ? (
         <section className="countries">
           {countries.map((country) => {
             return (
               <SingleCountry
-                country={country}
                 key={country.alpha3Code}
+                country={country}
+                isDark={isDark}
+              />
+            );
+          })}
+        </section>
+      ) : searched.length > 0 && region === "All" ? (
+        <section>
+          {searched.map((country) => {
+            return (
+              <SingleSearched
+                key={country.ccn3}
+                country={country}
+                isDark={isDark}
+              />
+            );
+          })}
+        </section>
+      ) : region !== "All" && query.length < 1 ? (
+        <section className="countries">
+          {filtered.map((country) => {
+            return (
+              <SingleCountry
+                key={country.alpha3Code}
+                country={country}
+                isDark={isDark}
+              />
+            );
+          })}
+        </section>
+      ) : region !== "All" && query.length > 1 ? (
+        <section className="countries">
+          {filteredSearch.map((country) => {
+            return (
+              <SingleSearched
+                key={country.ccn3}
+                country={country}
                 isDark={isDark}
               />
             );
           })}
         </section>
       ) : (
-        <section className="countries">
-          {filtered.map((country) => {
-            return (
-              <SingleCountry
-                country={country}
-                key={country.alpha3Code}
-                isDark={isDark}
-              />
-            );
-          })}
-        </section>
+        ""
       )}
     </>
   );
