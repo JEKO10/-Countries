@@ -4,18 +4,22 @@ import SingleCountry from "./SingleCountry";
 import SingleSearched from "./SingleSearched";
 
 function Countries({ isDark }) {
+  const [query, setQuery] = useState("");
   const [countries, setCountries] = useState([]);
   const [searched, setSearched] = useState([]);
-  const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [region, setRegion] = useState("All");
   const [filtered, setFiltered] = useState([]);
   const [filteredSearch, setFilteredSearched] = useState([]);
 
   const fetchData = async () => {
-    const response = await fetch("https://restcountries.com/v2/all");
-    const data = await response.json();
-    setCountries(data);
+    try {
+      const response = await fetch("https://restcountries.com/v2/all");
+      const data = await response.json();
+      setCountries(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchSearched = async () => {
@@ -34,19 +38,27 @@ function Countries({ isDark }) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    fetchSearched();
+  }, [query]);
+
   const filterCountries = (region) => {
     const newCountries = countries.filter(
       (country) => country.region === region
     );
-    const newSearched = searched.filter((country) => country.region === region);
     setFiltered(newCountries);
-    setFilteredSearched(newSearched);
+    if (query !== "") {
+      const newSearched = searched.filter(
+        (country) => country.region === region
+      );
+      setFilteredSearched(newSearched);
+    }
   };
 
   return (
     <>
       <section className="searchBar">
-        <div className="search">
+        <div className={isDark ? "search dark" : "search"}>
           <img src={SearchImg} alt="IMG" />
           <input
             className={isDark ? "darkText dark" : ""}
@@ -55,7 +67,6 @@ function Countries({ isDark }) {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
-              fetchSearched();
             }}
           />
         </div>
@@ -158,7 +169,7 @@ function Countries({ isDark }) {
           })}
         </section>
       ) : searched.length > 0 && region === "All" ? (
-        <section>
+        <section className="countries">
           {searched.map((country) => {
             return (
               <SingleSearched

@@ -56,12 +56,12 @@ nav button:hover {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  background-color: #fff;
 }
 
 .search {
   border-radius: 10px;
   padding: 5px 15px;
-  background-color: #fff;
   transition: all 1s ease;
 }
 
@@ -169,17 +169,6 @@ nav button:hover {
   color: #fff;
 }
 
-/* .loading {
-  width: 6rem;
-  height: 6rem;
-  margin: 0 auto;
-  margin-top: 10rem;
-  border-radius: 50%;
-  border: 3px solid #ccc;
-  border-top-color: #0177fb;
-  animation: spinner 0.6s linear infinite;
-} */
-
 @media screen and (max-width: 760px) {
   .countries {
     padding: 0 30px;
@@ -237,9 +226,3 @@ nav button:hover {
     height: 150px;
   }
 }
-
-/* @keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
-} */

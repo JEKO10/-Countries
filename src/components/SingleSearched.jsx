@@ -1,9 +1,19 @@
-import React from "react";
-
 function SingleSearched({ country, isDark }) {
+  const { population, region, capital } = country;
+
   return (
-    <div>
-      <h1>{country.name.common}</h1>
+    <div className={isDark ? "country dark darkText" : "country"}>
+      <img src={country.flags.png} alt="IMG" />
+      <h2>{country.name.common}</h2>
+      <h4>
+        Population: <span>{population}</span>{" "}
+      </h4>
+      <h4>
+        Region: <span> {region}</span>
+      </h4>
+      <h4>
+        Capital: <span>{capital}</span>
+      </h4>
     </div>
   );
 }
