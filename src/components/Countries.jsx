@@ -131,13 +131,25 @@ function Countries({ isDark }) {
       {region === "All" ? (
         <section className="countries">
           {countries.map((country) => {
-            return <SingleCountry country={country} key={country.alpha3Code} />;
+            return (
+              <SingleCountry
+                country={country}
+                key={country.alpha3Code}
+                isDark={isDark}
+              />
+            );
           })}
         </section>
       ) : (
         <section className="countries">
           {filtered.map((country) => {
-            return <SingleCountry country={country} key={country.alpha3Code} />;
+            return (
+              <SingleCountry
+                country={country}
+                key={country.alpha3Code}
+                isDark={isDark}
+              />
+            );
           })}
         </section>
       )}

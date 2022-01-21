@@ -1,8 +1,8 @@
-function SingleCountry({ country }) {
+function SingleCountry({ country, isDark }) {
   const { name, population, region, capital } = country;
 
   return (
-    <div className="country">
+    <div className={isDark ? "country dark darkText" : "country"}>
       <img src={country.flags.png} alt="IMG" />
       <h2>{name}</h2>
       <h4>
