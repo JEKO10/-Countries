@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchImg from "../images/icon-search.svg";
 import SingleCountry from "./SingleCountry";
+import { Link } from "react-router-dom";
 
 function Countries({ isDark }) {
   const [region, setRegion] = useState("All");
@@ -23,10 +24,10 @@ function Countries({ isDark }) {
 
   const filterSearched = async () => {
     if (query !== "") {
-      const newC = countries.filter((country) =>
+      const newSearched = countries.filter((country) =>
         country.name.toLowerCase().includes(query.toLowerCase())
       );
-      setSearched(newC);
+      setSearched(newSearched);
     }
   };
 
@@ -155,48 +156,60 @@ function Countries({ isDark }) {
       {query.length === 0 && region === "All" ? (
         <section className="countries">
           {countries.map((country) => {
+            const { alpha3Code } = country;
             return (
-              <SingleCountry
-                key={country.alpha3Code}
-                country={country}
-                isDark={isDark}
-              />
+              <Link to={`/details/${alpha3Code}`} key={alpha3Code}>
+                <SingleCountry
+                  key={country.alpha3Code}
+                  country={country}
+                  isDark={isDark}
+                />
+              </Link>
             );
           })}
         </section>
       ) : searched.length > 0 && region === "All" ? (
         <section className="countries">
           {searched.map((country) => {
+            const { alpha3Code } = country;
             return (
-              <SingleCountry
-                key={country.alpha3Code}
-                country={country}
-                isDark={isDark}
-              />
+              <Link to={`/details/${alpha3Code}`} key={alpha3Code}>
+                <SingleCountry
+                  key={country.alpha3Code}
+                  country={country}
+                  isDark={isDark}
+                />
+              </Link>
             );
           })}
         </section>
       ) : region !== "All" && query.length < 1 ? (
         <section className="countries">
           {filtered.map((country) => {
+            const { alpha3Code } = country;
             return (
-              <SingleCountry
-                key={country.alpha3Code}
-                country={country}
-                isDark={isDark}
-              />
+              <Link to={`/details/${alpha3Code}`} key={alpha3Code}>
+                <SingleCountry
+                  key={country.alpha3Code}
+                  country={country}
+                  isDark={isDark}
+                />
+              </Link>
             );
           })}
         </section>
       ) : region !== "All" && query.length > 1 ? (
         <section className="countries">
           {filteredSearch.map((country) => {
+            const { alpha3Code } = country;
             return (
-              <SingleCountry
-                key={country.alpha3Code}
-                country={country}
-                isDark={isDark}
-              />
+              <Link to={`/details/${alpha3Code}`} key={alpha3Code}>
+                <SingleCountry
+                  key={country.alpha3Code}
+                  country={country}
+                  isDark={isDark}
+                />
+              </Link>
             );
           })}
         </section>
