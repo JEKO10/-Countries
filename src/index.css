@@ -157,6 +157,36 @@ nav button:hover {
   display: none;
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 70vh;
+}
+
+.error h1 {
+  font-size: 3rem;
+  color: #ff0000;
+  margin: 2rem 0;
+}
+
+.error #back {
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  transition: all 1s ease;
+}
+
+.error #back:hover {
+  background-color: #fff;
+  color: #ff0000;
+  border: 3px solid #ff0000;
+}
+
 .dark {
   background-color: #202c37 !important;
 }
