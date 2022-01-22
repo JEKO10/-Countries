@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import SearchImg from "../images/icon-search.svg";
 import SingleCountry from "./SingleCountry";
-import SingleSearched from "./SingleSearched";
 
 function Countries({ isDark }) {
+  const [region, setRegion] = useState("All");
   const [query, setQuery] = useState("");
   const [countries, setCountries] = useState([]);
   const [searched, setSearched] = useState([]);
   const [open, setOpen] = useState(false);
-  const [region, setRegion] = useState("All");
   const [filtered, setFiltered] = useState([]);
   const [filteredSearch, setFilteredSearched] = useState([]);
 
@@ -22,15 +21,12 @@ function Countries({ isDark }) {
     }
   };
 
-  const fetchSearched = async () => {
-    try {
-      const response = await fetch(
-        `https://restcountries.com/v3.1/name/${query}`
+  const filterSearched = async () => {
+    if (query !== "") {
+      const newC = countries.filter((country) =>
+        country.name.toLowerCase().includes(query.toLowerCase())
       );
-      const data = await response.json();
-      setSearched(data);
-    } catch (err) {
-      console.log(err);
+      setSearched(newC);
     }
   };
 
@@ -39,7 +35,7 @@ function Countries({ isDark }) {
   }, []);
 
   useEffect(() => {
-    fetchSearched();
+    filterSearched();
   }, [query]);
 
   const filterCountries = (region) => {
@@ -172,8 +168,8 @@ function Countries({ isDark }) {
         <section className="countries">
           {searched.map((country) => {
             return (
-              <SingleSearched
-                key={country.ccn3}
+              <SingleCountry
+                key={country.alpha3Code}
                 country={country}
                 isDark={isDark}
               />
@@ -196,8 +192,8 @@ function Countries({ isDark }) {
         <section className="countries">
           {filteredSearch.map((country) => {
             return (
-              <SingleSearched
-                key={country.ccn3}
+              <SingleCountry
+                key={country.alpha3Code}
                 country={country}
                 isDark={isDark}
               />
