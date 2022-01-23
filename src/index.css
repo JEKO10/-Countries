@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #fafa;
+  background-color: #fafafa;
   transition: all 1s ease;
 }
 
@@ -165,16 +165,22 @@ nav button:hover {
 
 .details {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 50px 45px;
-}
-
-.details .flag {
-  display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  padding: 50px 45px;
+}
+
+.details .main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.details .main img {
+  height: 412px;
+  width: 630px;
 }
 
 .details #back {
@@ -186,9 +192,9 @@ nav button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 0;
+  margin: 3rem 0;
   padding: 10px 15px;
-  border-radius: 10px;
+  border-radius: spx;
   box-shadow: 0 1px 2px 0 #0000000d;
   cursor: pointer;
   transition: all 1s ease;
@@ -196,6 +202,26 @@ nav button:hover {
 
 .details #back span {
   padding-left: 15px;
+}
+
+.details .info {
+  flex-basis: 40%;
+}
+
+.details .info > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 80%;
+}
+
+.details .info ul {
+  list-style-type: none;
+  margin: 1rem 0;
+}
+
+.details .info ul li span {
+  font-weight: 700;
 }
 
 .error {
