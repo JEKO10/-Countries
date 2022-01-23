@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Countries from "../components/Countries";
 
-function Navbar() {
+function Home() {
   const [isDark, setIsDark] = useState(false);
 
   const divs = document.getElementsByTagName("div");
@@ -83,4 +83,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Home;

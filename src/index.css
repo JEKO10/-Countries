@@ -6,6 +6,7 @@
 }
 
 body {
+  background-color: #fafa;
   transition: all 1s ease;
 }
 
@@ -100,6 +101,11 @@ nav button:hover {
   gap: 2.5rem;
 }
 
+.countries a {
+  color: #000;
+  text-decoration: none;
+}
+
 .country {
   border-radius: 5px;
   box-shadow: 0 10px 5px 0 #0000000d;
@@ -155,6 +161,41 @@ nav button:hover {
 
 .hide {
   display: none;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 50px 45px;
+}
+
+.details .flag {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.details #back {
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px 0 #0000000d;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.details #back span {
+  padding-left: 15px;
 }
 
 .error {
