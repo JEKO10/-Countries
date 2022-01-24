@@ -85,6 +85,14 @@ function CountryDetails() {
                       </li>
                     </ul>
                   </div>
+                  {/* <h3>
+                    <span>Borders: </span>
+                    {country.borders.map((border) => {
+                      return (
+                        <Link to={`/details/${border}`} key={border}></Link>
+                      );
+                    })}
+                  </h3> */}
                 </div>
               </div>
             </div>

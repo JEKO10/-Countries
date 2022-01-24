@@ -206,6 +206,10 @@ nav button:hover {
 
 .details .info {
   flex-basis: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-direction: column;
 }
 
 .details .info > div {
@@ -222,6 +226,10 @@ nav button:hover {
 
 .details .info ul li span {
   font-weight: 700;
+}
+
+.details .info a {
+  padding: 0 10px;
 }
 
 .error {

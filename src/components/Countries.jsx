@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import SearchImg from "../images/icon-search.svg";
 import SingleCountry from "./SingleCountry";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context";
 
-function Countries({ isDark }) {
+function Countries() {
+  const { countries, setCountries, isDark } = useGlobalContext();
+
   const [region, setRegion] = useState("All");
   const [query, setQuery] = useState("");
-  const [countries, setCountries] = useState([]);
   const [searched, setSearched] = useState([]);
   const [open, setOpen] = useState(false);
   const [filtered, setFiltered] = useState([]);
