@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useGlobalContext } from "../context";
 
 function CountryDetails() {
+  const { isDark } = useGlobalContext();
+
   const { alpha3Code } = useParams();
   const [country, setCountry] = useState([]);
 
@@ -25,18 +28,18 @@ function CountryDetails() {
   return (
     <>
       <Navbar />
-      <section>
+      <section className={isDark ? "darkSection" : "countryInfo"}>
         {country.map((country) => {
           console.log(country);
           return (
-            <div key={country.ccn3} className="details">
-              <Link to="/" id="back">
+            <article key={country.ccn3} className="details">
+              <Link to="/" className={isDark ? "dark" : ""} id="back">
                 <svg
                   width="1em"
                   height="1em"
                   viewBox="0 0 16 16"
                   className="bi bi-arrow-left"
-                  fill="currentColor"
+                  fill={isDark ? "#fff" : "currentColor"}
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
@@ -48,14 +51,16 @@ function CountryDetails() {
                     d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
                   />
                 </svg>
-                <span>Back</span>
+                <span className={isDark ? "darkText" : ""}>Back</span>
               </Link>
-              <div className="main">
+              <article className="main">
                 <img src={country.flags.svg} alt="IMG" />
-                <div className="info">
-                  <h1>{country.name.common}</h1>
-                  <div>
-                    <ul>
+                <article className="info">
+                  <h1 className={isDark ? "darkText" : ""}>
+                    {country.name.common}
+                  </h1>
+                  <article>
+                    <ul className={isDark ? "darkText" : ""}>
                       <li>
                         <span>Native name: </span>
                         {Object.values(country.name.nativeName)[0]?.common}
@@ -73,7 +78,7 @@ function CountryDetails() {
                         <span>Capital:</span> {country.capital}
                       </li>
                     </ul>
-                    <ul>
+                    <ul className={isDark ? "darkText" : ""}>
                       <li>
                         <span>Top Level Domain:</span> {country.tld[0]}
                       </li>
@@ -86,7 +91,7 @@ function CountryDetails() {
                         {Object.values(country.languages).join(", ")}
                       </li>
                     </ul>
-                  </div>
+                  </article>
                   {/* <h3>
                     <span>Borders: </span>
                     {country.borders.map((border) => {
@@ -95,9 +100,9 @@ function CountryDetails() {
                       );
                     })}
                   </h3> */}
-                </div>
-              </div>
-            </div>
+                </article>
+              </article>
+            </article>
           );
         })}
       </section>

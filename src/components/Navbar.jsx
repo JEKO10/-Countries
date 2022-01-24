@@ -3,13 +3,48 @@ import { useGlobalContext } from "../context";
 function Navbar() {
   const { isDark, setIsDark } = useGlobalContext();
 
+  const divs = document.getElementsByTagName("div");
+  const text = [
+    document.getElementsByTagName("h2"),
+    document.getElementsByTagName("h3"),
+    document.getElementsByTagName("h4"),
+  ];
+
+  const html = document.getElementsByTagName("html")[0];
+
+  if (isDark) {
+    html.classList.add("darkSection");
+
+    text.forEach((singleText) => {
+      for (let i = 0; i < singleText.length; i++) {
+        singleText[i].classList.add("darkText");
+      }
+    });
+
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].classList.add("dark");
+    }
+  } else {
+    html.classList.remove("darkSection");
+
+    text.forEach((singleText) => {
+      for (let i = 0; i < singleText.length; i++) {
+        singleText[i].classList.remove("darkText");
+      }
+    });
+
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].classList.remove("dark");
+    }
+  }
+
   return (
     <nav
       style={
         isDark ? { backgroundColor: "#202c37" } : { backgroundColor: "#fff" }
       }
     >
-      <h3>Where in the world?</h3>
+      <h3 className={isDark ? "darkText" : ""}>Where in the world?</h3>
       <button
         onClick={() => {
           setIsDark(!isDark);
