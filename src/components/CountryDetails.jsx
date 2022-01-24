@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function CountryDetails() {
   const { alpha3Code } = useParams();
@@ -23,6 +24,7 @@ function CountryDetails() {
 
   return (
     <>
+      <Navbar />
       <section>
         {country.map((country) => {
           console.log(country);

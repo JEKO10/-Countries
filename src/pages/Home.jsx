@@ -1,5 +1,6 @@
 import { useGlobalContext } from "../context";
 import Countries from "../components/Countries";
+import Navbar from "../components/Navbar";
 
 function Home() {
   const { isDark } = useGlobalContext();
@@ -39,6 +40,7 @@ function Home() {
 
   return (
     <>
+      <Navbar />
       <main
         style={
           isDark
