@@ -30,7 +30,6 @@ function CountryDetails() {
       <Navbar />
       <section className={isDark ? "darkSection" : "countryInfo"}>
         {country.map((country) => {
-          console.log(country);
           return (
             <article key={country.ccn3} className="details">
               <Link to="/" className={isDark ? "dark" : ""} id="back">
