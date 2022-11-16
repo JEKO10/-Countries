@@ -28,4 +28,4 @@ In this challenge, I displayed countries with all the necessary information abou
 
 ## Live preview
 
-[Click for live preview](https://jeko10.github.io/Job-Listing/)
+[Click for live preview](https://jeko10.github.io/Countries/)
