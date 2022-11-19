@@ -17,7 +17,7 @@ This is a solution to the [REST Countries API with color theme switcher](https:/
 
 ## Project overview
 
-In this challenge, I displayed countries with all the necessary information about specific country, such as name, population, region, capital, etc. There is filtering, based on selected region(continent). You are able to search for countries and change color theme. I used context as app provider. In there, I set up state for countries and theme. I used local storage for saving user's selected theme.
+In this challenge, I displayed countries with all the necessary information about a specific country, such as name, population, region, capital, etc. There is filtering, based on selected region(continent). You are able to search for countries and change the color theme. I used context as an app provider. In there, I set up the state for countries and themes. I used local storage for saving the user's selected theme.
 
 ## Built with
 
